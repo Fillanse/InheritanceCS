@@ -1,0 +1,14 @@
+a:\VSC\Top\CS\Inheritance\Academy\bin\Debug\net8.0\Academy.exe
+a:\VSC\Top\CS\Inheritance\Academy\bin\Debug\net8.0\Academy.deps.json
+a:\VSC\Top\CS\Inheritance\Academy\bin\Debug\net8.0\Academy.runtimeconfig.json
+a:\VSC\Top\CS\Inheritance\Academy\bin\Debug\net8.0\Academy.dll
+a:\VSC\Top\CS\Inheritance\Academy\bin\Debug\net8.0\Academy.pdb
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.GeneratedMSBuildEditorConfig.editorconfig
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.AssemblyInfoInputs.cache
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.AssemblyInfo.cs
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.csproj.CoreCompileInputs.cache
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.dll
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\refint\Academy.dll
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.pdb
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.genruntimeconfig.cache
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\ref\Academy.dll
