@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj": {}
+    "a:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj": {}
   },
   "projects": {
-    "A:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj": {
+    "a:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj",
+        "projectUniqueName": "a:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj",
         "projectName": "Academy",
-        "projectPath": "A:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj",
+        "projectPath": "a:\\VSC\\Top\\CS\\Inheritance\\Academy\\Academy.csproj",
         "packagesPath": "C:\\Users\\eliga\\.nuget\\packages\\",
-        "outputPath": "A:\\VSC\\Top\\CS\\Inheritance\\Academy\\obj\\",
+        "outputPath": "a:\\VSC\\Top\\CS\\Inheritance\\Academy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eliga\\AppData\\Roaming\\NuGet\\NuGet.Config",

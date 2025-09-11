@@ -28,23 +28,48 @@ namespace Academy
                 new Human("Chris", "Cornell", 52),
             };
 
-            string fileByType = ".\\groupByType.txt";
+            string fileSorted = ".\\groupByType.txt";
             string file = ".\\group.txt";
 
-            Human.PrintByType(group);
+#if !PRINT
+            Console.WriteLine("\n=== ORIGINAL GROUPS ===");
+
+            Console.WriteLine("\n Sorted group:");
+            Human.PrintSorted(group);
+
+            Console.WriteLine("Unsorted group:");
             Human.Print(group);
 
             Human man = Human.Parse("Freddie Mercury 45 Rock 25");
-            Console.WriteLine($"{man} {man.GetType()}");
+            Console.WriteLine($"{man} | Type: {man.GetType().Name}");
+            Console.WriteLine();
+#endif
 
-            Human.WriteToFileByType(group, fileByType);
+#if !WRITE_TO_FILE
+            Human.WriteToFileSorted(group, fileSorted);
             Human.WriteToFile(group, file);
+
             man.AppendToFile(file);
+#endif
 
-            Console.WriteLine(Human.ReadFromFile(fileByType));
-            Console.WriteLine(Human.ReadFromFile(file));
+#if !READ_FROM_FILE
 
+            Human[] groupFromFileSorted = Human.ReadFromFile(fileSorted);
+            Human[] groupFromFile = Human.ReadFromFile(file);
+
+            Console.WriteLine("\n=== READ FROM FILES ===");
+            
+            Console.WriteLine("\nSorted group from file:");
+            Human.PrintSorted(groupFromFileSorted);
+
+            Console.WriteLine("Unsorted group from file:");
+            Human.Print(groupFromFile);
+
+            Human.ClearFile(fileSorted);
             Human.ClearFile(file);
+
+#endif
+
 
 
         }

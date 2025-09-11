@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.AccessControl;
 using System.Text;
-using System.Text.Unicode;
 using System.Threading.Tasks;
+
 
 namespace Academy
 {
@@ -45,125 +44,66 @@ namespace Academy
             _ => throw new Exception("Args error")
         };
 
-        private static List<Human>? SortByType<T>(Human[] group)
-        {
-            if (typeof(T) == typeof(Teacher)) return group.Where(human => human.GetType() == typeof(Teacher)).Cast<Human>().ToList();
-            if (typeof(T) == typeof(Student)) return group.Where(human => human.GetType() == typeof(Student)).Cast<Human>().ToList();
-            if (typeof(T) == typeof(Graduate)) return group.Where(human => human.GetType() == typeof(Graduate)).Cast<Human>().ToList();
-            if (typeof(T) == typeof(Human)) return group.Where(human => human.GetType() == typeof(Human)).Cast<Human>().ToList();
-            return null;
-        }
+        private static T[] SortByType<T>(Human[] group) => group.Where(human => human.GetType() == typeof(T)).Cast<T>().ToArray();
         #endregion
 
         #region CONSOLE
         public static void Print(Human[] group)
         {
-            foreach (Human human in group) Console.WriteLine(human.ToString());
+            foreach (Human human in group) Console.WriteLine(human);
             Console.WriteLine();
         }
-        public static void PrintByType(Human[] group)
+        private static void Print<T>(Human[] group, string header)
         {
-            List<Human>? teachers = SortByType<Teacher>(group);
-            List<Human>? students = SortByType<Student>(group);
-            List<Human>? graduates = SortByType<Graduate>(group);
-            List<Human>? humans = SortByType<Human>(group);
-            if (teachers != null && teachers.Any())
-            {
-                Console.WriteLine(Teacher.TypeHeader());
-                foreach (Human human in teachers) Console.WriteLine(human);
-            }
+            T[] humans = SortByType<T>(group);
+            if (!humans.Any()) return;
 
-            if (students != null && students.Any())
-            {
-                Console.WriteLine(Student.TypeHeader());
-                foreach (Human human in students) Console.WriteLine(human);
-            }
-            if (graduates != null && graduates.Any())
-            {
-                Console.WriteLine(Graduate.TypeHeader());
-                foreach (Human human in graduates) Console.WriteLine(human);
-            }
-            if (humans != null && humans.Any())
-            {
-                Console.WriteLine(TypeHeader());
-                foreach (Human human in humans) Console.WriteLine(human);
-            }
+            Console.WriteLine(header);
+            foreach (T human in humans) Console.WriteLine(human);
             Console.WriteLine();
         }
+        public static void PrintSorted(Human[] group)
+        {
+            Print<Teacher>(group, Teacher.TypeHeader());
+            Print<Student>(group, Student.TypeHeader());
+            Print<Graduate>(group, Graduate.TypeHeader());
+            Print<Human>(group, TypeHeader());
+        }
+
         #endregion
 
         #region FILE
-        public void AppendToFile(string path)
+        public void AppendToFile(string path) => File.AppendAllText(path, this + "\n");
+        public static void WriteToFile(Human[] group, string path) => File.WriteAllLines(path, group.Select(h => h.ToString()));
+        private static void WriteToFile<T>(Human[] group, string header, StreamWriter sw)
         {
-            if (!File.Exists(path)) using (File.Create(path)) { }
-            ;
-            using (StreamWriter sw = File.AppendText(path)) { sw.WriteLine(ToString()); }
+            T[] humans = SortByType<T>(group);
+
+            if (!humans.Any()) return;
+
+            sw.WriteLine(header);
+            foreach (T human in humans) sw.WriteLine(human);
+            sw.WriteLine();
         }
-        public static void WriteToFile(Human[] group, string path)
+        public static void WriteToFileSorted(Human[] group, string path)
         {
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                foreach (Human human in group) sw.WriteLine(human.ToString());
-            }
+            using var sw = new StreamWriter(path);
+            WriteToFile<Teacher>(group, Teacher.TypeHeader(), sw);
+            WriteToFile<Student>(group, Student.TypeHeader(), sw);
+            WriteToFile<Graduate>(group, Graduate.TypeHeader(), sw);
+            WriteToFile<Human>(group, TypeHeader(), sw);
         }
-        public static void WriteToFileByType(Human[] group, string path)
-        {
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                List<Human>? teachers = SortByType<Teacher>(group);
-                List<Human>? students = SortByType<Student>(group);
-                List<Human>? graduates = SortByType<Graduate>(group);
-                List<Human>? humans = SortByType<Human>(group);
 
-                if (teachers != null && teachers.Any())
-                {
-                    sw.WriteLine(Teacher.TypeHeader());
-                    foreach (Human human in teachers) sw.WriteLine(human);
-                    sw.WriteLine();
-                }
-
-                if (students != null && students.Any())
-                {
-                    sw.WriteLine(Student.TypeHeader());
-                    foreach (Human human in students) sw.WriteLine(human);
-                    sw.WriteLine();
-                }
-
-                if (graduates != null && graduates.Any())
-                {
-                    sw.WriteLine(Graduate.TypeHeader());
-                    foreach (Human human in graduates) sw.WriteLine(human);
-                    sw.WriteLine();
-                }
-
-                if (humans != null && humans.Any())
-                {
-                    sw.WriteLine(TypeHeader());
-                    foreach (Human human in humans) sw.WriteLine(human);
-                    sw.WriteLine();
-                }
-            }
-        }
         public static Human[] ReadFromFile(string path)
         {
             if (!File.Exists(path)) return Array.Empty<Human>();
 
-            List<Human> humans = new List<Human>();
-
-            using (StreamReader sr = new StreamReader(path))
-            {
-                string? line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.Contains("NAME") || string.IsNullOrWhiteSpace(line)) continue;
-                    humans.Add(Parse(line));
-                }
-            }
-            return humans.ToArray();
+            return File.ReadLines(path)
+            .Where(line => !string.IsNullOrWhiteSpace(line) && !line.Contains("NAME")).Select(Parse).ToArray();
         }
         public static void ClearFile(string path)
         {
-            File.WriteAllText(path,string.Empty);
+            File.WriteAllText(path, string.Empty);
         }
         #endregion
     }

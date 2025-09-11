@@ -12,3 +12,4 @@ a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\refint\Academy.dll
 a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.pdb
 a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.genruntimeconfig.cache
 a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\ref\Academy.dll
+a:\VSC\Top\CS\Inheritance\Academy\obj\Debug\net8.0\Academy.sourcelink.json
