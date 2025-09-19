@@ -57,7 +57,6 @@ namespace Academy
         {
             T[] humans = SortByType<T>(group);
             if (!humans.Any()) return;
-
             Console.WriteLine(header);
             foreach (T human in humans) Console.WriteLine(human);
             Console.WriteLine();

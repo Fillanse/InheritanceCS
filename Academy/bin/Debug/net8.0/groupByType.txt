@@ -1,0 +1,23 @@
+NAME             LASTNAME         AGE  SPECIALITY       EXPERIENCE 
+Immanuel        |Kant            |79  |Philosophy      |40 |
+Georg           |Hegel           |61  |Philosophy      |40 |
+Jean-Paul       |Sartre          |74  |Philosophy      |30 |
+Albert          |Camus           |46  |Philosophy      |20 |
+Stephen         |Hawking         |76  |Physics         |40 |
+Albert          |Einstein        |76  |Physics         |40 |
+
+NAME             LASTNAME         AGE  SPECIALITY       GROUP            RATING   ATTENDANCE   
+Michael         |Scott           |43  |Management      |The Office      |100     |10          |
+Dwight          |Schrute         |39  |Sales           |The Office      |60      |100         |
+Jim             |Halpert         |26  |Sales           |The Office      |100     |60          |
+
+NAME             LASTNAME         AGE  SPECIALITY       GROUP            RATING   ATTENDANCE   SUBJECT          
+Vincent         |Vega            |40  |Crimilal        |Pulp Fiction    |70      |30          |Stupidity       |
+Jules           |Winnfield       |42  |Criminal        |Pulp Fiction    |100     |100         |Walk the Earth  |
+
+NAME             LASTNAME         AGE  
+Ozzy            |Osbourne        |76  |
+John            |Bonham          |32  |
+Eddie           |Van Halen       |65  |
+Chris           |Cornell         |52  |
+

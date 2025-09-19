@@ -65,8 +65,8 @@ namespace Academy
             Console.WriteLine("Unsorted group from file:");
             Human.Print(groupFromFile);
 
-            Human.ClearFile(fileSorted);
-            Human.ClearFile(file);
+            // Human.ClearFile(fileSorted);
+            // Human.ClearFile(file);
 
 #endif
 
